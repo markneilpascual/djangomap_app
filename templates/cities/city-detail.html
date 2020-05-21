@@ -1,0 +1,58 @@
+{% extends 'cities/base.html' %}
+{% load leaflet_tags %}
+{% leaflet_css %}
+{% leaflet_js %}
+
+{% block body_content %}
+
+<div class="container">
+    <p>{{ city.id }}/{{ city.name }}/{{ city.geometry }}</p>
+    {% leaflet_map "main" callback="map_init" %}
+    <br>
+    <p id="demo"></p>
+
+        <form action=" {% url 'cities:index' %}">
+      <div class="form-group">
+        <label for="exampleInputEmail1">property address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1"  placeholder="property address">
+
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">property title</label>
+        <input type="email" class="form-control" id="exampleInputEmail1"placeholder="property title">
+
+      </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+
+<script type="text/javascript">
+    function map_init(map, options)
+    {
+        // get point lat and lon
+        var lon = "{{ city.geometry.x }}";
+        var lat = "{{ city.geometry.y }}";
+
+        // zoom to point & add it to map
+        map.setView([lat, lon], 12);
+
+        // right-clicked event
+        map.on("contextmenu", function (event)
+                {
+                  document.getElementById("demo").innerHTML = "user right-clicked on map coordinates: "+event.latlng.toString();
+                  L.marker(event.latlng).addTo(map);
+                }
+              );
+
+
+
+    }
+
+
+
+
+
+</script>
+{% endblock %}
+
