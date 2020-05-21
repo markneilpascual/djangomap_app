@@ -38,7 +38,7 @@ SECRET_KEY = 'zr)y7)ky$+!sk59db_%5kwv7a3kssbrl#emuki(ras$u#l#=#g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -53,6 +53,9 @@ INSTALLED_APPS = [
     'leaflet',
     'django.contrib.gis',
     'cities.apps.CitiesConfig',
+    # Simplified static file serving.
+    # https://warehouse.python.org/project/whitenoise/
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 MIDDLEWARE = [

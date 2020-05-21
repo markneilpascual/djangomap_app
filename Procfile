@@ -1,0 +1,1 @@
+web: gunicorn django_map_app.wsgi --log-file -
