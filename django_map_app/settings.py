@@ -24,6 +24,8 @@ if os.name == 'nt':
     os.environ['PROJ_LIB'] = OSGEO4W + r"\share\proj"
     os.environ['PATH'] = OSGEO4W + r"\bin;" + os.environ['PATH']
     # GDAL_LIBRARY_PATH = r'C:\OSGeo4W64\bin\gdal300'
+
+
     GDAL_LIBRARY_PATH = os.environ.get('GDAL_LIBRARY_PATH')
     GEOS_LIBRARY_PATH = os.environ.get('GEOS_LIBRARY_PATH')
 
